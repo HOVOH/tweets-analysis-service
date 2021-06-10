@@ -1,0 +1,1 @@
+docker push ghcr.io/hovoh/tweets-analysis-service:latest
