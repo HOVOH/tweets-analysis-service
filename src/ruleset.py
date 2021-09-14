@@ -44,7 +44,7 @@ class Ruleset:
             encoded = encoded.append(dict, ignore_index=True)
 
         encoded.fillna(0, inplace=True)
-        rules = fpgrowth(encoded, min_support=0.02, use_colnames=True)
+        rules = fpgrowth(encoded, min_support=0.1, use_colnames=True)
         print("--- Extracted Rules Sample ---")
         print(rules.head(10))
         for i, rule in rules.iterrows():

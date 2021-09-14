@@ -1,21 +1,8 @@
-import json
-
 from ruleset import Ruleset
+from sklearn.model_selection import train_test_split
+from data import load_data, array_to_df
 
 RULESET_PATH = "tweet-ruleset.json"
-
-with open('labelled-tweets.json', 'r', encoding='utf8') as labelled_tweets_file:
-    response = labelled_tweets_file.read()
-
-data = json.loads(response)
-results = data['results']
-
-texts = []
-topics = []
-for result in results:
-    texts.append(result['text'])
-    topics.append(result['meta']['topics'])
-
-ruleset = Ruleset()
-ruleset.fit(texts, topics)
-ruleset.save(RULESET_PATH)
+df = load_data("labelled-tweets-26-08-2021.json")
+x = array_to_df(df["words"])
+topics = array_to_df(df["topics"])
