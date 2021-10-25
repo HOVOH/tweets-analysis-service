@@ -1,8 +1,6 @@
-FROM ghcr.io/hovoh/python-nltk:latest
+FROM ghcr.io/hovoh/mlflow-model-serving:latest
 
 WORKDIR /usr/src/app
+RUN pip install nltk~=3.6.2
+RUN python -m nltk.downloader all
 COPY src .
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-EXPOSE 9000
-CMD ["python", "server.py"]
